@@ -1,0 +1,23 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "sharpm@purdue.edu",
+    "longName": "FilmBuff",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "FilmBuff",
+    "targetPlatforms": [
+        "aplite",
+        "basalt"
+    ],
+    "uuid": "39368abf-74e3-4e84-a61b-19dfb83e41e8",
+    "versionLabel": "1.3",
+    "watchapp": {
+        "watchface": true
+    }
+}
