@@ -3,14 +3,11 @@
 #include "dithered_rects.h"
 #include <math.h>
 #include "drawarc.h"  
-//SET CONSTANTS
-#define M_PI 3.14159265358979323846
   
 //SET VARIABLES  
 Window *my_window;
 Layer * base_layer;
 Layer * minute_layer;
-Layer * masked_minute_layer;
 Layer * circle_and_crosshair_layer;
 static TextLayer *s_timeText;
 
@@ -20,14 +17,11 @@ void draw_base_layer(Layer *cell_layer, GContext *ctx){
  }
 
 void draw_minute_layer(Layer *cell_layer, GContext *ctx){
-  // convert current minute to radians
   //GET A TM STRUCTURE
   time_t temp = time(NULL);
   struct tm *tick_time = localtime(&temp);
   int mins =tick_time->tm_min;
-  
-  APP_LOG(APP_LOG_LEVEL_INFO,"DEGREES:  %d", mins*6+6);
-  int dither = false;
+  int dither = 0;
   #ifdef PBL_COLOR //Pebble Time code
     dither = 0;
     graphics_context_set_stroke_color(ctx,GColorDarkGray);
@@ -40,7 +34,6 @@ void draw_minute_layer(Layer *cell_layer, GContext *ctx){
       graphics_draw_arc(ctx,GPoint(72,84),111,111,270,360,dither);
       graphics_draw_arc(ctx,GPoint(72,84),111,111,0,(mins-15)*6,dither);
     }
-     
 }
 
 void draw_circle_and_crosshair_layer(Layer * cell_layer, GContext *ctx){
